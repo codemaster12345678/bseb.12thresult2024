@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Result Display</title>
+<script>
+function validateData() {
+    var rollNo = document.getElementById('rollNo').value;
+    var name = document.getElementById('name').value;
+    var fatherName = document.getElementById('fatherName').value;
+    var marksheetDiv = document.getElementById('marksheet');
+
+    if(rollNo.length === 8 && name.length >= 12 && fatherName.length >= 5) {
+        var imageName = '';
+        if(name === 'Keshav Kumar') {
+            imageName = 'index.image2.jpeg'; // Replace with the actual file name of image1
+        } else if(name === 'Rishuraj Kumar') {
+            imageName = 'index.image1.jpeg'; // Replace with the actual file name of image3
+        } else {
+            imageName = 'image2.jpg'; // Replace with the actual file name of image2
+        }
+
+        marksheetDiv.innerHTML = '<h2>Marksheet</h2>' +
+                                 '<img src="' + imageName + '" alt="Marksheet Image">' +
+                                 '<p>Roll No: ' + rollNo + '</p>' +
+                                 '<p>Name: ' + name + '</p>' +
+                                 '<p>Father\'s Name: ' + fatherName + '</p>';
+        marksheetDiv.style.display = 'block';
+    } else {
+        alert('Error: Please check the input requirements.');
+        marksheetDiv.style.display = 'none';
+    }
+}
+</script>
+</head>
+<body>
+<h1>BIHAR SCHOOL EXAMINATION BOARD</h1>
+<h2>Enter Your Details</h2>
+<form>
+    Roll No: <input type="text" id="rollNo" required><br>
+    Name: <input type="text" id="name" required><br>
+    Father's Name: <input type="text" id="fatherName" required><br>
+    <input type="button" value="Show Marksheet" onclick="validateData()">
+</form>
+<div id="marksheet" style="display:none;"></div>
+</body>
+</html>
